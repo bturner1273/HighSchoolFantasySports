@@ -4,7 +4,7 @@ var Stats = function(sport){
   this.stats_table = [];
 };
 
-Stats.prototype.updateStats = function(key, value){
+Stats.prototype.addStat = function(key, value){
   this.stats_table.push({key: key, value: value});
 };
 

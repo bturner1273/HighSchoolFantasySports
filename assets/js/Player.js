@@ -7,9 +7,8 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.dob = dob;
     this.gradLevel = gradeLevel;
     this.activeSport = activeSport;
-    this.sports = [];
+    this.sports = [activeSport];
     this.stats = [new Stats(activeSport)];
-    this.addSport(activeSport);
 };
 
 Player.prototype.getStatsFor = function(sport){
@@ -22,6 +21,7 @@ Player.prototype.getStatsFor = function(sport){
 
 Player.prototype.addSport = function(sport){
     this.sports.push(sport);
+    this.stats.push(new Stats(sport));
 };
 
 Player.prototype.toString = function(){

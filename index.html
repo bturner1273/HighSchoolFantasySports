@@ -24,7 +24,7 @@
           that can be selected for games
       -->
       <div class="text-white bg-dark">
-          New Players Table
+          New Players
       </div>
         <table class="table table-striped table-dark" id="newPlayersTable">
           <thead>
@@ -51,7 +51,7 @@
 
       <!--BUTTONS AND MENUS FOR DIFFERENT TABLE SORTING METHODS WILL GO HERE-->
       <div class="text-white bg-dark">
-          Past Players Table
+          Past Players
       </div>
         <table class="table table-striped table-dark" id="pastPlayersTable">
           <thead>
@@ -69,11 +69,24 @@
   </div>
 
 
-
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBEVcX521M1xvRJbrc1oMrx2rviluNXV98",
+        authDomain: "fantasysports-e95ae.firebaseapp.com",
+        databaseURL: "https://fantasysports-e95ae.firebaseio.com",
+        projectId: "fantasysports-e95ae",
+        storageBucket: "fantasysports-e95ae.appspot.com",
+        messagingSenderId: "581141158176"
+      };
+      firebase.initializeApp(config);
+    </script>
     <script type="text/javascript" src="assets/js/Stats.js"></script>
     <script type="text/javascript" src="assets/js/Player.js"></script>
     <script type="text/javascript" src="assets/js/Game.js"></script>
     <script type="text/javascript" src="assets/js/BaseballGame.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <script type="text/javascript" src="assets/js/Database.js"></script>
     <script type="text/javascript" src="assets/js/tester.js"></script>
   </body>
 </html>

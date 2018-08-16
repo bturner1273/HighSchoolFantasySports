@@ -4,10 +4,6 @@ var Game = function(){
   }
 };
 
-Game.prototype.setName = function(name){
-  this.name = name;
-};
-
 //concrete functions
 Game.prototype.inputStatsToRecord = function(){
 

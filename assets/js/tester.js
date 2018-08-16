@@ -7,5 +7,5 @@ console.log(brad);
 
 
 var baseballGame = new BaseballGame();
-console.log(baseballGame);
+console.log(baseballGame.name);
 // baseballGame.updatePlayerStats(); throws exception because it is unimplemented in BaseballGame class

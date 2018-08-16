@@ -1,6 +1,6 @@
 var BaseballGame = function(){
   Game.apply(this, arguments);
-  this.setName('baseball');
+  this.name = "baseball"; 
 };
 
 BaseballGame.prototype = Object.create(Game.prototype);

@@ -3,8 +3,70 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   <body>
+    <!--This page will act as the main user menu-->
+        <div class="container-fluid">
+          <div class="jumbotron">
+            <h1>Your Sports Recorder</h1>
+            <hr>
+            <p>This app will allow schools to record sports data for the benefits
+            of their teams, individual players, and college recruiters</p>
+          </div>
+        </div>
+
+    <!--NEW PLAYERS TABLE:
+          This will be a table with text inputs for initializing new players
+          that can be selected for games
+      -->
+      <div class="text-white bg-dark">
+          New Players Table
+      </div>
+        <table class="table table-striped table-dark" id="newPlayersTable">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">D.O.B.</th>
+              <th scope="col">Grade Level</th>
+              <th scope="col">Sports</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+
+
+
+    <!--PAST PLAYERS TABLE:
+          This will be a list of all the possible players to choose from it will
+          have sort functions, group capabilities all that jazz. Each player will
+          have a radio button next to their row of the table, if this radio button
+          is toggled on when the start new game button is pushed, this player will
+          be added to the game
+      -->
+
+      <!--BUTTONS AND MENUS FOR DIFFERENT TABLE SORTING METHODS WILL GO HERE-->
+      <div class="text-white bg-dark">
+          Past Players Table
+      </div>
+        <table class="table table-striped table-dark" id="pastPlayersTable">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">D.O.B.</th>
+              <th scope="col">Grade Level</th>
+              <th scope="col">Sports</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+
 
 
     <script type="text/javascript" src="assets/js/Stats.js"></script>

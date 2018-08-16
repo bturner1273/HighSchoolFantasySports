@@ -24,6 +24,11 @@ Player.prototype.addSport = function(sport){
     this.stats.push(new Stats(sport));
 };
 
+//will return a table row representing this player
+Player.prototype.toTableRow = function(){
+
+};
+
 Player.prototype.toString = function(){
   return "Player: " + this.name + " DOB: " + this.dob + " Grade level: " + this.gradeLevel +
   "\nActive sport: " + this.activeSport +  " Sports: " + this.sports + " Stats: " + this.stats;

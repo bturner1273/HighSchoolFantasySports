@@ -36,7 +36,7 @@ Player.prototype.toTableRow = function(){
     var sports = $('<td></td>');
     sports.html(this.sports);
     var radio = $('<td></td>');
-    var radio_btn = $('<input type="radio">');
+    var radio_btn = $('<input type="checkbox">');
     radio.append(radio_btn);
     var remove = $('<td><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></td>');
     row.append(name,dob,grade,sports,radio,remove);

@@ -3,7 +3,12 @@ hr{
 }
 
 input:focus{
-  outline: none;
+  outline: 2px solid white;
+}
+
+.close:focus{
+  outline-offset: 9px;
+  outline: 2px solid white;
 }
 
 table th{

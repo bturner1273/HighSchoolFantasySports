@@ -1,14 +1,30 @@
 var newPlayersTable = $("#newPlayersTable");
 var currentPlayersTable = $("#currentPlayersTable");
-
 var newPlayerName = $('[name="name"]');
 var newPlayerDob = $('[name="dob"]');
 var newPlayerGrade = $('[name="grade"]');
 var newPlayerSports = $('[name="sports"]');
 
-// console.log(newPlayersTable.html() + "\n\n" + currentPlayersTable.html())
 
+function removeFromCurrentPlayersTable(element){
+  removePlayer(element);
+  $(element).parent().parent().remove();
+}
 
+function bindRemoveButtons(){
+  $('.close').each(function(){
+      $(this).on("click", function(){
+        removeFromCurrentPlayersTable(this);
+      });
+  });
+}
+
+function bindLastRemoveButton(){
+  var buttons = $('.close');
+  $(buttons[buttons.length-1]).on("click", function(){
+    removeFromCurrentPlayersTable(this);
+  });
+}
 
 
 $(document).on("keypress", function(event){

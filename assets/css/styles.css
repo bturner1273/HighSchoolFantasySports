@@ -1,5 +1,18 @@
-body{
-  background-image: url("https://previews.123rf.com/images/backyardproduction/backyardproduction1510/backyardproduction151000192/47375068-aerial-or-top-down-view-of-the-detail-of-newly-mown-grass-in-well-tended-lawn.jpg");
+hr{
+  background-color: white;
+}
+
+input:focus{
+  outline: none;
+}
+
+table th{
+  text-align: center;
+}
+
+table td{
+  text-align: center;
+  text-transform: capitalize;
 }
 
 div div{

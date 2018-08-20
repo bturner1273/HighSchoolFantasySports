@@ -5,7 +5,7 @@ var Player = function(name){
 var Player = function(name, dob, gradeLevel, activeSport){
     this.name = name;
     this.dob = dob;
-    this.gradLevel = gradeLevel;
+    this.gradeLevel = gradeLevel;
     this.activeSport = activeSport;
     this.sports = [activeSport];
     this.stats = [new Stats(activeSport)];
@@ -26,7 +26,20 @@ Player.prototype.addSport = function(sport){
 
 //will return a table row representing this player
 Player.prototype.toTableRow = function(){
-
+    var row = $("<tr></tr>");
+    var name = $("<td></td>");
+    name.html(this.name);
+    var dob = $("<td></td>");
+    dob.html(this.dob);
+    var grade = $("<td></td>");
+    grade.html(this.gradeLevel);
+    var sports = $("<td></td>");
+    sports.html(this.sports);
+    var radio = $("<td></td>");
+    var btn = $('<input type="radio">');
+    radio.append(btn);
+    row.append(name,dob,grade,sports,radio);
+    return row;
 };
 
 Player.prototype.toString = function(){

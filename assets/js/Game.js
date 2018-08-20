@@ -6,7 +6,7 @@ var Game = function(){
 
 //concrete functions
 Game.prototype.inputStatsToRecord = function(){
-
+  //numGames must be a stat that every game records for every player for every game
 };
 
 

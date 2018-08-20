@@ -5,4 +5,3 @@ var BaseballGame = function(){
 
 BaseballGame.prototype = Object.create(Game.prototype);
 BaseballGame.prototype.constructor = BaseballGame;
- 

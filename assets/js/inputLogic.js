@@ -6,7 +6,10 @@ var newPlayerDob = $('[name="dob"]');
 var newPlayerGrade = $('[name="grade"]');
 var newPlayerSports = $('[name="sports"]');
 
-// console.log(newPlayersTable.html() + "\n\n" + currentPlayersTable.html());
+// console.log(newPlayersTable.html() + "\n\n" + currentPlayersTable.html())
+
+
+
 
 $(document).on("keypress", function(event){
     if(event.which == 13 || event.keyCode == 13){
@@ -16,9 +19,7 @@ $(document).on("keypress", function(event){
           newPlayerDob.val("");
           newPlayerGrade.val("");
           newPlayerSports.val("");
-          currentPlayersTable.append(toAdd.toTableRow());
-          //push toAdd to firebase and make onChildedAdded, onChildRemoved, and onValue functions
+          pushPlayer(toAdd);
         }
-        // console.log(newPlayerName.val() + "\n" + newPlayerDob.val() + "\n" + newPlayerGrade.val() + "\n" + newPlayerSports.val());
     }
 });

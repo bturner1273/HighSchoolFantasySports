@@ -27,15 +27,15 @@ Player.prototype.addSport = function(sport){
 //will return a table row representing this player
 Player.prototype.toTableRow = function(){
     var row = $("<tr></tr>");
-    var name = $("<td></td>");
+    var name = $('<td></td>');
     name.html(this.name);
-    var dob = $("<td></td>");
+    var dob = $('<td></td>');
     dob.html(this.dob);
-    var grade = $("<td></td>");
+    var grade = $('<td></td>');
     grade.html(this.gradeLevel);
-    var sports = $("<td></td>");
+    var sports = $('<td></td>');
     sports.html(this.sports);
-    var radio = $("<td></td>");
+    var radio = $('<td></td>');
     var btn = $('<input type="radio">');
     radio.append(btn);
     row.append(name,dob,grade,sports,radio);

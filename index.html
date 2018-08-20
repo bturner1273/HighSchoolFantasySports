@@ -24,7 +24,7 @@
           that can be selected for games
       -->
       <div class="text-white bg-dark">
-          New Players
+          New Player
       </div>
         <table class="table table-striped table-dark" id="newPlayersTable">
           <thead>
@@ -32,13 +32,13 @@
               <th scope="col">Name</th>
               <th scope="col">D.O.B.</th>
               <th scope="col">Grade Level</th>
-              <th scope="col">Sports</th>
+              <th scope="col">Active Sport</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <input type="text" class="text-white bg-dark container-fluid" name="name" value="" required>
+                <input type="text" class="text-white bg-dark container-fluid" name="name" value="">
               </td>
               <td>
                 <input type="text" class="text-white bg-dark container-fluid" name="dob" value="">
@@ -55,7 +55,7 @@
 
 
 
-    <!--PAST PLAYERS TABLE:
+    <!--CURRENT PLAYERS TABLE:
           This will be a list of all the possible players to choose from it will
           have sort functions, group capabilities all that jazz. Each player will
           have a radio button next to their row of the table, if this radio button
@@ -73,7 +73,8 @@
               <th scope="col">Name</th>
               <th scope="col">D.O.B.</th>
               <th scope="col">Grade Level</th>
-              <th scope="col">Sports</th>
+              <th scope="col">Active Sport</th>
+              <th scope="col">Select</th>
             </tr>
           </thead>
           <tbody>
@@ -81,7 +82,6 @@
           </tbody>
         </table>
   </div>
-
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -95,12 +95,12 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script type="text/javascript" src="assets/js/inputLogic.js"></script>
     <script type="text/javascript" src="assets/js/Stats.js"></script>
     <script type="text/javascript" src="assets/js/Player.js"></script>
     <script type="text/javascript" src="assets/js/Game.js"></script>
     <script type="text/javascript" src="assets/js/BaseballGame.js"></script>
     <script type="text/javascript" src="assets/js/Database.js"></script>
+    <script type="text/javascript" src="assets/js/inputLogic.js"></script>
     <script type="text/javascript" src="assets/js/tester.js"></script>
   </body>
 </html>

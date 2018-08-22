@@ -6,6 +6,10 @@ input:focus{
   outline: 2px solid white;
 }
 
+.buttons{
+  margin: 10px;
+}
+
 .close:focus{
   outline-offset: 9px;
   outline: 2px solid white;
@@ -24,4 +28,8 @@ div div{
   padding-left: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.hide{
+  display:none;
 }

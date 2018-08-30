@@ -6,6 +6,17 @@ input:focus{
   outline: 2px solid white;
 }
 
+.sports-modal-img{
+  width: 60px;
+  height: auto;
+  margin: 5px;
+}
+
+.sports-modal-img-larger{
+  width: 75px;
+  margin: 5px;
+}
+
 .buttons{
   margin: 10px;
 }

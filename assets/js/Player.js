@@ -1,3 +1,7 @@
+//Players need a position field which is a key which is a string
+//representing the name of the sport and a list which is the list
+//of positions that that player plays in that sport
+
 var Player = function(name){
   this.name = name;
 };
@@ -8,6 +12,7 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.gradeLevel = gradeLevel;
     this.activeSport = activeSport;
     this.sports = [activeSport];
+    this.positions = [new Position(activeSport)];
     this.stats = [new Stats(activeSport)];
 };
 

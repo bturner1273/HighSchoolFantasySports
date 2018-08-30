@@ -1,4 +1,3 @@
-
 var Stats = function(sport){
   this.sport = sport;
   this.stats_table = [];

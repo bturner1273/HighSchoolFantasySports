@@ -6,15 +6,6 @@ var newPlayerGrade = $('[name="grade"]');
 var newPlayerSports = $('[name="sports"]');
 var enterPlayerButton = $("#enter_player");
 
-var pickedGameButton = $("#pickedGameButton");
-
-
-pickedGameButton.click(function(){
-  setTimeout(function(){
-    $("#gameModal").modal('show');
-  }, 300);
-});
-
 //calls removePlayer to remove from firebase db and
 //then removes the table row that the remove button
 //descended from
@@ -52,8 +43,6 @@ function getPlayer(){
     pushPlayer(toAdd);
   }
 }
-
-
 
 $(document).on("keypress", function(event){
     if(event.which == 13 || event.keyCode == 13){

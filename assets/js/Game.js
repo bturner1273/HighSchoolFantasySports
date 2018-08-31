@@ -1,7 +1,5 @@
 var Game = function(){
-  //these show up in subclasses
-  this.numGames = 0;
-  this.statsToRecord = [];
+  this.statsToRecord = ['NG'];
   this.players = [];
   if(this.constructor === Game){
     throw new Error("Cannot instantiate an abstract class");
@@ -10,7 +8,19 @@ var Game = function(){
 
 //concrete functions
 Game.prototype.setStatsToRecord = function(statsToRecord){
-  this.statsToRecord = statsToRecord;
+  // console.log('stats to record: ' + statsToRecord);
+  this.statsToRecord = this.statsToRecord.concat(statsToRecord);
+  // console.log('this games stats to record after being set: ' + this.statsToRecord);
+};
+
+Game.prototype.getPlayersFromStart = function(){
+  //selects all checked checkboxes
+  var checkboxes = $("input[type=checkbox]:checked");
+  checkboxes.forEach(function(){
+    //push the player represented by the checkbox
+    this.players.push();
+  });
+
 };
 
 Game.prototype.setPlayers = function(players){
@@ -25,11 +35,15 @@ Game.prototype.incrementNumGames = function(){
   this.numGames++;
 };
 
+
+
 Game.prototype.inputGameStatsToModal = function(){
-  var th = $("<th><td></td></th>");
+  var th = $("<th class='container-fluid'></th>");
+  th.append($('<td></td>'));
   this.statsToRecord.forEach(function(e){
     th.append($("<td>" + e + "</td>"));
   });
+  // console.log('this is supposed to be the th object to be loaded into the table: ' + th.html());
   $('#modalTable').append(th);
 };
 
@@ -37,7 +51,7 @@ Game.prototype.showGameModal = function(){
   this.inputGameStatsToModal();
   setTimeout(function(){
     $("#gameModal").modal('show');
-  }, 300);
+  }, 450);
 };
 
 

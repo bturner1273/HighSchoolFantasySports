@@ -93,11 +93,11 @@
         <div class="modal-header">
           <h5 class="modal-title" id="gameModalTitle">Pick Your Game</h5>
         </div>
-        <div class="modal-body">
-          <img id='playBaseball'class="sports-modal-img" src="assets/textures/baseball.png" alt="">
-          <img id='playFootball' class="sports-modal-img-larger" src="assets/textures/football.png" alt="">
-          <img id='playSoccer' class="sports-modal-img" src="assets/textures/soccerball.png" alt="">
-          <img id='playBasketball' class="sports-modal-img" src="assets/textures/basketball.png" alt="">
+        <div class="modal-body text-center">
+            <img id='playBaseball'class="sports-modal-img" src="assets/textures/baseball.png" alt="">
+            <img id='playFootball' class="sports-modal-img-larger" src="assets/textures/football.png" alt="">
+            <img id='playSoccer' class="sports-modal-img" src="assets/textures/soccerball.png" alt="">
+            <img id='playBasketball' class="sports-modal-img" src="assets/textures/basketball.png" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -113,18 +113,22 @@
         <div class="modal-header">
           <h5 class="modal-title" id="gameModalTitle">Input Stats</h5>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-center recordGameModal">
           <table class="table table-striped table-dark" id="modalTable">
 
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" name="button">Add Player</button>
           <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
   </div>
+
+
+
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script>
       // Initialize Firebase

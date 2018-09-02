@@ -3,6 +3,15 @@ var playersRef = firebase.database().ref("Players");
 var playerList = [];
 
 
+function getPlayerByName(name){
+  for(var i = 0; i < playerList.length; i++){
+    if(playerList[i].name.localeCompare(name, 'en', {'sensitivity':'base'}) == 0){
+      return playerList[i];
+    }
+  }
+  return false;
+}
+
 function pushPlayer(player){
     playersRef.child(player.name).set(player);
     playerList.push(player);

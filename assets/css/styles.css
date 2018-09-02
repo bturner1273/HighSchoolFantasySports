@@ -6,6 +6,12 @@ input:focus{
   outline: 2px solid white;
 }
 
+.recordGameModal {
+  max-height: 450px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
 .sports-modal-img{
   width: 60px;
   height: auto;

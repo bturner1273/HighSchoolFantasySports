@@ -1,3 +1,6 @@
+var firstLoad = true;
+
+
 var Game = function(){
   this.statsToRecord = ['NG'];
   this.players = [];
@@ -8,18 +11,15 @@ var Game = function(){
 
 //concrete functions
 Game.prototype.setStatsToRecord = function(statsToRecord){
-  // console.log('stats to record: ' + statsToRecord);
   this.statsToRecord = this.statsToRecord.concat(statsToRecord);
-  // console.log('this games stats to record after being set: ' + this.statsToRecord);
 };
 
-Game.prototype.getPlayersFromStart = function(){
-  //selects all checked checkboxes
+Game.prototype.addPlayersToGame = function(){
   var checkboxes = $("input[type=checkbox]:checked");
-  checkboxes.forEach(function(){
-    //push the player represented by the checkbox
-    this.players.push();
-  });
+  for(var i = 0; i < checkboxes.length; i++){
+     $(checkboxes[i]).prop('checked', false);
+     this.addPlayer(getPlayerByName($(checkboxes[i]).parent().parent()[0].cells[0].innerHTML));
+  }
 
 };
 
@@ -37,18 +37,34 @@ Game.prototype.incrementNumGames = function(){
 
 
 
-Game.prototype.inputGameStatsToModal = function(){
-  var th = $("<th class='container-fluid'></th>");
-  th.append($('<td></td>'));
-  this.statsToRecord.forEach(function(e){
-    th.append($("<td>" + e + "</td>"));
-  });
-  // console.log('this is supposed to be the th object to be loaded into the table: ' + th.html());
-  $('#modalTable').append(th);
+Game.prototype.setUpGameModal = function(){
+  if(firstLoad){
+    firstLoad = false;
+    var th = $("<tr class='container-fluid'></tr>");
+    th.append($('<td></td>'));
+    this.statsToRecord.forEach(function(e){
+      th.append($("<td>" + e + "</td>"));
+    });
+    // console.log('this is supposed to be the th object to be loaded into the table: ' + th.html());
+    $('#modalTable').append(th);
+    this.addPlayersToGame();
+    //put player rows in
+    var tb = $("<tbody></tbody>");
+    for(var i = 0; i < this.players.length; i++){
+      var tr = $("<tr></tr>");
+      for(var j = 0; j < this.statsToRecord.length+1; j++){
+        if(j==0){
+           tr.append($("<td>" + this.players[i].name + "</td>"));
+        }else tr.append($("<td><input type='text' class='text-white bg-dark text-center' style='width:50px;'></td>"));
+      }
+      tb.append(tr);
+    }
+    $("#modalTable").append(tb);
+  }
 };
 
 Game.prototype.showGameModal = function(){
-  this.inputGameStatsToModal();
+  this.setUpGameModal();
   setTimeout(function(){
     $("#gameModal").modal('show');
   }, 450);

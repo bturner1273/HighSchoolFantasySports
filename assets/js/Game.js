@@ -55,7 +55,7 @@ Game.prototype.setUpGameModal = function(){
       for(var j = 0; j < this.statsToRecord.length+1; j++){
         if(j==0){
            tr.append($("<td>" + this.players[i].name + "</td>"));
-        }else tr.append($("<td><input type='text' class='text-white bg-dark text-center' style='width:50px;'></td>"));
+        }else tr.append($("<td><input type='text' class='text-white bg-dark text-center' style='width:50px;' value='0'></td>"));
       }
       tb.append(tr);
     }

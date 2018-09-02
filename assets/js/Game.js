@@ -1,4 +1,11 @@
-//is this branch still master?
+//still todo:
+/*
+-GameRecord class for players to store
+-Start game button should switch to resume game unless
+  the current game is closed
+-Increment buttons added to all gameModal table inputs
+-Update database functionality
+*/
 
 var firstLoad = true;
 

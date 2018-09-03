@@ -20,7 +20,6 @@ Game.prototype.addPlayersToGame = function(){
      $(checkboxes[i]).prop('checked', false);
      this.addPlayer(getPlayerByName($(checkboxes[i]).parent().parent()[0].cells[0].innerHTML));
   }
-
 };
 
 Game.prototype.setPlayers = function(players){
@@ -45,10 +44,10 @@ Game.prototype.setUpGameModal = function(){
     this.statsToRecord.forEach(function(e){
       th.append($("<td>" + e + "</td>"));
     });
-    // console.log('this is supposed to be the th object to be loaded into the table: ' + th.html());
+
     $('#modalTable').append(th);
     this.addPlayersToGame();
-    //put player rows in
+    
     var tb = $("<tbody></tbody>");
     for(var i = 0; i < this.players.length; i++){
       var tr = $("<tr></tr>");

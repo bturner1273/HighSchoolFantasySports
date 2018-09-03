@@ -14,6 +14,7 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.sports = [activeSport];
     this.positions = [new Position(activeSport)];
     this.stats = [new Stats(activeSport)];
+    this.gameRecords = [new Stats(activeSport)];
 };
 
 Player.prototype.getStatsFor = function(sport){

@@ -14,7 +14,7 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.sports = [activeSport];
     this.positions = [new Position(activeSport)];
     this.stats = [new Stats(activeSport)];
-    this.gameRecords = [new Stats(activeSport)];
+    this.gameRecords = [];
 };
 
 Player.prototype.getStatsFor = function(sport){
@@ -23,6 +23,15 @@ Player.prototype.getStatsFor = function(sport){
         return this.stats[i];
       }
     }
+};
+
+Player.prototype.hasStatsFor = function(sport){
+  for(var i = 0; i < this.stats.length; i++){
+    if(this.stats[i].sport.toUpperCase() == sport.toUpperCase()){
+      return true;
+    }
+  }
+  return false;
 };
 
 Player.prototype.addSport = function(sport){

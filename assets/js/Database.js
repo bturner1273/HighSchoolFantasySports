@@ -23,8 +23,8 @@ function removePlayer(player){
   playersRef.child($(player).parent().parent()[0].cells[0].innerHTML).remove();
 }
 
-function updatePlayer(player, gameRecord){
-  
+function updatePlayer(player){
+
 }
 
 playersRef.on("value", function(snapshot){

@@ -1,10 +1,18 @@
 //still todo:
 /*
--GameRecord class for players to store
--Start game button should switch to resume game unless
-  the current game is closed
+active sport inputs for player entry are most likely
+unnecessary now as the game classes will change the players
+active sport if they are player that game
+
+*/
+
+
+
+/*
 -Increment buttons added to all gameModal table inputs
 -Update database functionality
+-Hover Explanations on Game Stats (figure out a way to display them well, hover event is already binded)
+-Add player functionality in game modal
 */
 
 var firstLoad = true;
@@ -30,6 +38,32 @@ Game.prototype.addPlayersToGame = function(){
      $(checkboxes[i]).prop('checked', false);
      this.addPlayer(getPlayerByName($(checkboxes[i]).parent().parent()[0].cells[0].innerHTML));
   }
+  this.loadPlayerStats();
+  this.loadPlayerGameRecords();
+};
+
+Game.prototype.loadPlayerStats = function(){
+  for(var i = 0; i < this.players.length; i++){
+      if(!this.players[i].hasStatsFor(this.players[i].activeSport)){
+        this.players[i].addSport(this.players[i].activeSport);
+      }
+      if(this.players[i].getStatsFor(this.players[i].activeSport).stats_table.length != this.statsToRecord.length){
+        this.players[i].getStatsFor(this.players[i].activeSport).stats_table.length = 0;
+        for(var j = 0; j < this.statsToRecord.length; j++){
+          this.players[i].getStatsFor(this.players[i].activeSport).addStat(this.statsToRecord[j], 0);
+        }
+      }
+  }
+};
+
+Game.prototype.loadPlayerGameRecords = function(){
+  for(var i = 0; i < this.players.length; i++){
+    var value = new Stats(this.players[i].activeSport);
+    for(var j = 0; j < this.statsToRecord.length; j++){
+      value.addStat(this.statsToRecord[j], 0);
+    }
+    this.players[i].gameRecords.push({key: this.players[i].activeSport + " Game " + this.players[i].getStatsFor(this.players[i].activeSport).getStat("ng").value, value: value});
+  }
 };
 
 Game.prototype.addPlayer = function(player){
@@ -40,7 +74,7 @@ Game.prototype.incrementNumGames = function(){
   this.numGames++;
 };
 
-Game.prototype.setUpGameModal = function(){
+Game.prototype.setUpGameModal = function(aggregatedRows){
   if(firstLoad){
     firstLoad = false;
     var th = $("<tr class='container-fluid'></tr>");
@@ -58,6 +92,8 @@ Game.prototype.setUpGameModal = function(){
       for(var j = 0; j < this.statsToRecord.length+1; j++){
         if(j==0){
            tr.append($("<td>" + this.players[i].name + "</td>"));
+        }else if(aggregatedRows.find(e=>e==j) == j){
+           tr.append($("<td>0</td>"));
         }else tr.append($("<td><input type='text' class='text-white bg-dark text-center' style='width:50px;' value='0'></td>"));
       }
       tb.append(tr);
@@ -66,11 +102,27 @@ Game.prototype.setUpGameModal = function(){
   }
 };
 
-Game.prototype.showGameModal = function(){
-  this.setUpGameModal();
+Game.prototype.setPlayersActiveSport = function(sport){
+  this.players.forEach(function(e){
+    e.activeSport = sport;
+  });
+};
+
+Game.prototype.showGameModal = function(aggregatedRows){
+  this.setUpGameModal(aggregatedRows);
   setTimeout(function(){
     $("#gameModal").modal('show');
   }, 450);
+};
+
+Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
+  $("#modalTable tr:first td").each(function(){
+    $(this).hover(function(){
+      console.log("hover in");
+    }, function(){
+      console.log("hover out");
+    });
+  });
 };
 
 
@@ -80,9 +132,5 @@ Game.prototype.recordPlay = function(){
 };
 
 Game.prototype.updatePlayerStats = function(){
-  throw new Error("Abstract function must be implemented before being called");
-};
-
-Game.prototype.bindStatAbreviationExplanations = function(){
   throw new Error("Abstract function must be implemented before being called");
 };

@@ -1,7 +1,7 @@
 var BaseballGame = function(){
   Game.apply(this, arguments);
   this.name = "baseball";
-  this.setStatsToRecord(['BA','HR','RBIS','RS','SB','W','ERA','WHIP','SO','S']);
+  this.setStatsToRecord(['AB', 'HITS', 'BA', 'HR','RBIS','RS','SB','W','ERA','WHIP','SO','S']);
 };
 
 //must be outside constructor

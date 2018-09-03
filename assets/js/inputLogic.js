@@ -1,4 +1,4 @@
-  var newPlayersTable = $("#newPlayersTable");
+var newPlayersTable = $("#newPlayersTable");
 var currentPlayersTable = $("#currentPlayersTable");
 var newPlayerName = $('[name="name"]');
 var newPlayerDob = $('[name="dob"]');

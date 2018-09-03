@@ -11,6 +11,7 @@ var firstLoad = true;
 
 
 var Game = function(){
+  this.timeStamp = new Date();
   this.statsToRecord = ['NG'];
   this.players = [];
   if(this.constructor === Game){
@@ -31,10 +32,6 @@ Game.prototype.addPlayersToGame = function(){
   }
 };
 
-Game.prototype.setPlayers = function(players){
-  this.players = players;
-};
-
 Game.prototype.addPlayer = function(player){
   this.players.push(player);
 };
@@ -42,8 +39,6 @@ Game.prototype.addPlayer = function(player){
 Game.prototype.incrementNumGames = function(){
   this.numGames++;
 };
-
-
 
 Game.prototype.setUpGameModal = function(){
   if(firstLoad){
@@ -56,7 +51,7 @@ Game.prototype.setUpGameModal = function(){
 
     $('#modalTable').append(th);
     this.addPlayersToGame();
-    
+
     var tb = $("<tbody></tbody>");
     for(var i = 0; i < this.players.length; i++){
       var tr = $("<tr></tr>");
@@ -85,5 +80,9 @@ Game.prototype.recordPlay = function(){
 };
 
 Game.prototype.updatePlayerStats = function(){
+  throw new Error("Abstract function must be implemented before being called");
+};
+
+Game.prototype.bindStatAbreviationExplanations = function(){
   throw new Error("Abstract function must be implemented before being called");
 };

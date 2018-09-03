@@ -23,6 +23,10 @@ function removePlayer(player){
   playersRef.child($(player).parent().parent()[0].cells[0].innerHTML).remove();
 }
 
+function updatePlayer(player, gameRecord){
+  
+}
+
 playersRef.on("value", function(snapshot){
     if(initial_load){
       data = snapshot;

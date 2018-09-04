@@ -138,11 +138,10 @@ Game.prototype.showGameModal = function(aggregatedRows){
 //in some sort of pop up information window
 Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
   $("#modalTable tr:first td").each(function(index){
-    var toShow = statExplanationList[index];
     $(this).hover(function(){
-      console.log(toShow);
+      console.log(statExplanationList[index]);
     }, function(){
-      console.log(toShow);
+      console.log(statExplanationList[index]);
     });
   });
 };

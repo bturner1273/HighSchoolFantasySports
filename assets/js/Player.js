@@ -7,6 +7,7 @@ var Player = function(name){
 };
 
 var Player = function(name, dob, gradeLevel, activeSport){
+    this.gameCount = 0;
     this.name = name;
     this.dob = dob;
     this.gradeLevel = gradeLevel;

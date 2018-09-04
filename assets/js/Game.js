@@ -4,16 +4,11 @@ active sport inputs for player entry are most likely
 unnecessary now as the game classes will change the players
 active sport if they are player that game
 
-*/
-
-
-
-/*
--Increment buttons added to all gameModal table inputs
--Update database functionality
--Hover Explanations on Game Stats (figure out a way to display them well, hover event is already binded)
+-Update database functionality    --just delete players in game from the database and restore them with their updated values
 -Add player functionality in game modal
+
 */
+
 
 var firstLoad = true;
 
@@ -164,8 +159,19 @@ Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
 };
 
 Game.prototype.updatePlayerStats = function(){
-
-}
+  var length = this.statsToRecord.length;
+  var tempStats = this.statsToRecord;
+  var tempAgRows = this.aggregatedRows;
+  $("#modalTable tr:not(:first)").each(function(){
+    for(var i = 0; i < length; i++){
+      if(tempAgRows.includes(i+1)){
+        getPlayerByName(this.cells[0].innerHTML).gameRecords[getPlayerByName(this.cells[0].innerHTML).gameCount].value.setStat(tempStats[i], this.cells[i+1].innerHTML);
+      }else{
+        getPlayerByName(this.cells[0].innerHTML).gameRecords[getPlayerByName(this.cells[0].innerHTML).gameCount].value.setStat(tempStats[i], $(this.cells[i+1]).children()[1].value);
+      }
+    }
+  });
+};
 
 //abstract functions
 Game.prototype.bindAggregateStats = function(){
@@ -173,9 +179,5 @@ Game.prototype.bindAggregateStats = function(){
 };
 
 Game.prototype.recordPlay = function(){
-  throw new Error("Abstract function must be implemented before being called");
-};
-
-Game.prototype.updatePlayerStats = function(){
   throw new Error("Abstract function must be implemented before being called");
 };

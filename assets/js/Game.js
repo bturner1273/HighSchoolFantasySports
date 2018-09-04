@@ -106,13 +106,17 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
 function bindIncrementAndDecrementButtons(){
   $(".incrementButton").each(function(){
     $(this).click(function(){
-
+        $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()+1);
     });
   });
 
   $(".decrementButton").each(function(){
     $(this).click(function(){
-
+      if($($(this).parent().children().get(1)).val() >= 1){
+        $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()-1);
+      }else{
+          $($(this).parent().children().get(1)).val(0);
+      }
     });
   });
 }
@@ -130,12 +134,15 @@ Game.prototype.showGameModal = function(aggregatedRows){
   }, 450);
 };
 
+//now I just need to figure out how to put toShow
+//in some sort of pop up information window
 Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
-  $("#modalTable tr:first td").each(function(){
+  $("#modalTable tr:first td").each(function(index){
+    var toShow = statExplanationList[index];
     $(this).hover(function(){
-      console.log("hover in");
+      console.log(toShow);
     }, function(){
-      console.log("hover out");
+      console.log(toShow);
     });
   });
 };

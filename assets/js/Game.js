@@ -17,17 +17,39 @@ active sport if they are player that game
 
 var firstLoad = true;
 
-
 var Game = function(){
   this.timeStamp = new Date();
   this.statsToRecord = ['NG*'];
   this.players = [];
+  this.aggregatedRows = [1];
   if(this.constructor === Game){
     throw new Error("Cannot instantiate an abstract class");
   }
 };
 
 //concrete functions
+Game.prototype.setAggregatedRows = function(aggregatedRows){
+  this.aggregatedRows = this.aggregatedRows.concat(aggregatedRows);
+};
+
+Game.prototype.getAggregateCol = function(col){
+  var tableDatum = $("#modalTable tr:not(:first) td");
+  var toReturn = [];
+  for(var i = col; i < tableDatum.length; i+=this.statsToRecord.length+1){
+    toReturn.push(tableDatum[i]);
+  }
+  return toReturn;
+};
+
+Game.prototype.getGameModalCol = function(col){
+  var tableDatum = $("#modalTable tr:not(:first) td");
+  var toReturn = [];
+  for(var i = col; i < tableDatum.length; i+=this.statsToRecord.length+1){
+    toReturn.push($(tableDatum[i]).children().get(1));
+  }
+  return toReturn;
+};
+
 Game.prototype.setStatsToRecord = function(statsToRecord){
   this.statsToRecord = this.statsToRecord.concat(statsToRecord);
 };
@@ -80,9 +102,8 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
     var th = $("<tr class='container-fluid'></tr>");
     th.append($('<td></td>'));
     this.statsToRecord.forEach(function(e){
-      th.append($("<td>" + e + "</td>"));
+      th.append($("<td>" + '<button type="button" class="btn btn-dark statAbreviations" data-toggle="tooltip" data-placement="bottom" title="">' + e + '</button>' + "</td>"));
     });
-
     $('#modalTable').append(th);
     this.addPlayersToGame();
 
@@ -107,6 +128,7 @@ function bindIncrementAndDecrementButtons(){
   $(".incrementButton").each(function(){
     $(this).click(function(){
         $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()+1);
+        $($(this).parent().children().get(1)).trigger("input");
     });
   });
 
@@ -114,6 +136,7 @@ function bindIncrementAndDecrementButtons(){
     $(this).click(function(){
       if($($(this).parent().children().get(1)).val() >= 1){
         $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()-1);
+        $($(this).parent().children().get(1)).trigger("input");
       }else{
           $($(this).parent().children().get(1)).val(0);
       }
@@ -127,27 +150,28 @@ Game.prototype.setPlayersActiveSport = function(sport){
   });
 };
 
-Game.prototype.showGameModal = function(aggregatedRows){
-  this.setUpGameModal(aggregatedRows);
+Game.prototype.showGameModal = function(){
+  this.setUpGameModal(this.aggregatedRows);
   setTimeout(function(){
     $("#gameModal").modal('show');
-  }, 450);
+  }, 650);
 };
 
-//now I just need to figure out how to put toShow
-//in some sort of pop up information window
 Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
-  $("#modalTable tr:first td").each(function(index){
-    $(this).hover(function(){
-      console.log(statExplanationList[index]);
-    }, function(){
-      console.log(statExplanationList[index]);
-    });
+  $(".statAbreviations").each(function(index){
+    $(this).attr('title', statExplanationList[index+1]);
   });
 };
 
+Game.prototype.updatePlayerStats = function(){
+
+}
 
 //abstract functions
+Game.prototype.bindAggregateStats = function(){
+  throw new Error("Abstract function must be implemented before being called");
+};
+
 Game.prototype.recordPlay = function(){
   throw new Error("Abstract function must be implemented before being called");
 };

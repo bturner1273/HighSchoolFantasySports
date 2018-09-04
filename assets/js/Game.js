@@ -92,9 +92,9 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
       for(var j = 0; j < this.statsToRecord.length+1; j++){
         if(j==0){
            tr.append($("<td>" + this.players[i].name + "</td>"));
-        }else if(aggregatedRows.find(e=>e==j) == j){
+        }else if(aggregatedRows.find(e => e == j) == j){
            tr.append($("<td>0</td>"));
-        }else tr.append($("<td><input type='text' class='text-white bg-dark text-center' style='width:50px;' value='0'></td>"));
+        }else tr.append($("<td><button type='button' class='btn btn-dark btn-sm'> - </button><input type='text' class='bg-secondary text-white text-center' value='0'><button type='button' class='btn btn-dark btn-sm'> + </button></td>"));
       }
       tb.append(tr);
     }

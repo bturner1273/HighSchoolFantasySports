@@ -12,6 +12,27 @@ input:focus{
   overflow-y: auto;
 }
 
+#modalTable{
+  overflow:scroll;
+}
+
+#modalTable td{
+  min-width: 120px;
+}
+
+#modalTable tr td button{
+  margin: 0px;
+  padding-top: 6px;
+  border-radius: 0px;
+}
+
+#modalTable tr td input{
+  border: none;
+  padding-bottom: 6px;
+  width: 30px;
+  border-radius: 0px;
+}
+
 .sports-modal-img{
   width: 60px;
   height: auto;

@@ -20,7 +20,7 @@ var firstLoad = true;
 
 var Game = function(){
   this.timeStamp = new Date();
-  this.statsToRecord = ['NG'];
+  this.statsToRecord = ['NG*'];
   this.players = [];
   if(this.constructor === Game){
     throw new Error("Cannot instantiate an abstract class");
@@ -62,7 +62,7 @@ Game.prototype.loadPlayerGameRecords = function(){
     for(var j = 0; j < this.statsToRecord.length; j++){
       value.addStat(this.statsToRecord[j], 0);
     }
-    this.players[i].gameRecords.push({key: this.players[i].activeSport + " Game " + this.players[i].getStatsFor(this.players[i].activeSport).getStat("ng").value, value: value});
+    this.players[i].gameRecords.push({key: this.players[i].activeSport + " Game " + this.players[i].getStatsFor(this.players[i].activeSport).getStat("ng*").value, value: value});
   }
 };
 
@@ -94,13 +94,28 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
            tr.append($("<td>" + this.players[i].name + "</td>"));
         }else if(aggregatedRows.find(e => e == j) == j){
            tr.append($("<td>0</td>"));
-        }else tr.append($("<td><button type='button' class='btn btn-dark btn-sm'> - </button><input type='text' class='bg-secondary text-white text-center' value='0'><button type='button' class='btn btn-dark btn-sm'> + </button></td>"));
+        }else tr.append($("<td><button type='button' class='btn btn-dark btn-sm decrementButton'> - </button><input type='text' class='bg-secondary text-white text-center' value='0'><button type='button' class='btn btn-dark btn-sm incrementButton'> + </button></td>"));
       }
       tb.append(tr);
     }
     $("#modalTable").append(tb);
+    bindIncrementAndDecrementButtons();
   }
 };
+
+function bindIncrementAndDecrementButtons(){
+  $(".incrementButton").each(function(){
+    $(this).click(function(){
+
+    });
+  });
+
+  $(".decrementButton").each(function(){
+    $(this).click(function(){
+
+    });
+  });
+}
 
 Game.prototype.setPlayersActiveSport = function(sport){
   this.players.forEach(function(e){

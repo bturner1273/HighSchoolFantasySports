@@ -1,7 +1,7 @@
 var playBaseball = $("#playBaseball");
 var playFootball = $("#playFootball");
-var playSoccer = $("playSoccer");
-var playBasketball = $("playBasketball");
+var playSoccer = $("#playSoccer");
+var playBasketball = $("#playBasketball");
 
 
 var closeGameButton = $("#closeGameButton");

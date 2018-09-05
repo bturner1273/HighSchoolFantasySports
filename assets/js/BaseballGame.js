@@ -18,28 +18,29 @@ BaseballGame.prototype.bindAggregateStats = function(){
   var bindingWalksEarnedOffPitcher = this.getGameModalCol(11);
   var bindingHitsEarnedOffPitcher = this.getGameModalCol(12);
   var bindToWHIP = this.getAggregateCol(13);
+  var innings = 7;
 
   $(bindingAtBats).each(function(index){
     $(this).on("input", function(){
-      bindToBattingAverage[index].innerHTML = (+bindingHits[index].value / +bindingAtBats[index].value).toFixed(3);
+      bindToBattingAverage[index].innerHTML = (Number(bindingHits[index].value) / Number(bindingAtBats[index].value)).toFixed(3);
     });
   });
 
   $(bindingHits).each(function(index){
     $(this).on("input", function(){
-      bindToBattingAverage[index].innerHTML = (bindingHits[index].value / +bindingAtBats[index].value).toFixed(3);
+      bindToBattingAverage[index].innerHTML = (Number(bindingHits[index].value) / Number(bindingAtBats[index].value)).toFixed(3);
     });
   });
 
   $(bindingWalksEarnedOffPitcher).each(function(index){
     $(this).on("input", function(){
-      bindToWHIP[index].innerHTML = ((+bindingHitsEarnedOffPitcher[index].value + bindingWalksEarnedOffPitcher[index].value)/9).toFixed(3);
+      bindToWHIP[index].innerHTML = ((Number(bindingHitsEarnedOffPitcher[index].value) + Number(bindingWalksEarnedOffPitcher[index].value))/7).toFixed(3);
     });
   });
 
   $(bindingHitsEarnedOffPitcher).each(function(index){
     $(this).on("input", function(){
-      bindToWHIP[index].innerHTML = ((+bindingHitsEarnedOffPitcher[index].value + bindingWalksEarnedOffPitcher[index].value)/9).toFixed(3);
+      bindToWHIP[index].innerHTML = ((Number(bindingHitsEarnedOffPitcher[index].value) + Number(bindingWalksEarnedOffPitcher[index].value))/7).toFixed(3);
     });
   });
 };

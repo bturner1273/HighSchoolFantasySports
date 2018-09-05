@@ -35,6 +35,8 @@ Game.prototype.setAggregatedRows = function(aggregatedRows){
   this.aggregatedRows = this.aggregatedRows.concat(aggregatedRows);
 };
 
+//get rid of this.statsToRecord.length + 1 and use classes to select the aggregated
+//columns instead
 Game.prototype.getAggregateCol = function(col){
   var tableDatum = $("#modalTable tr:not(:first) td");
   var toReturn = [];
@@ -101,6 +103,8 @@ Game.prototype.incrementNumGames = function(){
 
 Game.prototype.setUpGameModal = function(aggregatedRows){
   if(firstLoad){
+    // var templ = $($("playrRowTempl").html()); //this is making the template to keep loading on the page
+    // templ.find("td").html(this.player.name) //this is it too
     firstLoad = false;
     var th = $("<tr class='container-fluid'></tr>");
     th.append($('<td></td>'));
@@ -109,14 +113,13 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
     });
     $('#modalTable').append(th);
     this.addPlayersToGame();
-
     var tb = $("<tbody></tbody>");
     for(var i = 0; i < this.players.length; i++){
       var tr = $("<tr></tr>");
       for(var j = 0; j < this.statsToRecord.length+1; j++){
         if(j==0){
            tr.append($("<td>" + this.players[i].name + "</td>"));
-        }else if(aggregatedRows.find(e => e == j) == j){
+        }else if(aggregatedRows.find(e => e == j) == j){  //use regular function instead of arrow function
            tr.append($("<td>0</td>"));
         }else tr.append($("<td><button type='button' class='btn btn-dark btn-sm decrementButton'> - </button><input type='text' class='bg-secondary text-white text-center' value='0'><button type='button' class='btn btn-dark btn-sm incrementButton'> + </button></td>"));
       }
@@ -135,6 +138,7 @@ function bindIncrementAndDecrementButtons(){
     });
   });
 
+//USE CLASSES
   $(".decrementButton").each(function(){
     $(this).click(function(){
       if($($(this).parent().children().get(1)).val() >= 1){

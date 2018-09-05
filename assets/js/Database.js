@@ -26,9 +26,11 @@ function pushPlayerWithoutAppendingToTable(player){
 
 function removePlayer(player){
   playersRef.child($(player).parent().parent()[0].cells[0].innerHTML).remove();
+  // $(player).closest(".parent_class"). // find first accessor whose class is parent_class IMPORTANT
   removeFromPlayerList(player);
 }
 
+// todo: get rid of localeCompare
 function removeFromPlayerList(player){
   for(var i = 0; i < playerList.length; i++){
     if(playerList[i].name.localeCompare(player.name, 'en', {'sensitivity':'base'}) == 0){

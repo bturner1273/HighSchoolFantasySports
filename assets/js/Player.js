@@ -1,19 +1,3 @@
-var Player = function(name){
-  this.name = name;
-};
-
-var Player = function(name, dob, gradeLevel, activeSport){
-    this.gameCount = 0;
-    this.name = name;
-    this.dob = dob;
-    this.gradeLevel = gradeLevel;
-    this.activeSport = activeSport;
-    this.sports = [activeSport];
-    this.positions = [new Position(activeSport)];
-    this.stats = [new Stats(activeSport)];
-    this.gameRecords = [];
-};
-
 var Player = function(name, dob, gradeLevel, activeSport, gameCount, sports, positions, stats, gameRecords){
   if(gameCount && sports && positions && stats && gameRecords){
     this.name = name;
@@ -36,7 +20,6 @@ var Player = function(name, dob, gradeLevel, activeSport, gameCount, sports, pos
     this.stats = [new Stats(activeSport)];
     this.gameRecords = [];
   }
-
 };
 
 Player.prototype.getStatsFor = function(sport){
@@ -88,9 +71,4 @@ Player.prototype.toTableRow = function(tf){
       row.append(name,dob,grade,sports,check);
     }
     return row;
-};
-
-Player.prototype.toString = function(){
-  return "Player: " + this.name + " DOB: " + this.dob + " Grade level: " + this.gradeLevel +
-  "\nActive sport: " + this.activeSport +  " Sports: " + this.sports + " Stats: " + this.stats;
 };

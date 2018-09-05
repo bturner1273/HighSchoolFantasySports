@@ -37,7 +37,7 @@ Player.prototype.getStatsFor = function(sport){
 //this function will do all the compounding of the stats
 Player.prototype.updateStats = function(){
   this.gameRecords.forEach(function(){
-    
+
   });
 };
 
@@ -55,7 +55,6 @@ Player.prototype.addSport = function(sport){
     this.stats.push(new Stats(sport));
 };
 
-//will return a table row representing this player
 Player.prototype.toTableRow = function(tf){
     var row = $("<tr></tr>");
     var name = $('<td></td>');

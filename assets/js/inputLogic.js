@@ -6,9 +6,6 @@ var newPlayerGrade = $('[name="grade"]');
 var newPlayerSports = $('[name="sports"]');
 var enterPlayerButton = $("#enter_player");
 
-//calls removePlayer to remove from firebase db and
-//then removes the table row that the remove button
-//descended from
 function removeFromCurrentPlayersTable(element){
   removePlayer(element);
   $(element).parent().parent().remove();

@@ -35,6 +35,20 @@ playBasketball.click(function(){
 
 });
 
+
+addPlayerButton.click(function(){
+  var addablePlayers = arrayDiff(playerList, game.players);
+  console.log("Players that can be added: " + addablePlayers);
+});
+
+function arrayDiff(a, b) {
+  return a.filter(
+    function(el) {
+      return b.indexOf(el) < 0;
+    }
+  );
+}
+
 closeGameButton.click(function(){
   game = null;
   backToStart();
@@ -48,6 +62,7 @@ saveGameButton.click(function(){
   game.players.forEach(function(player){
     player.updateStats();
   });
+  game = null;
 });
 
 function hideModalTable(){

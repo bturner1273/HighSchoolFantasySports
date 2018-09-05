@@ -14,16 +14,29 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.gameRecords = [];
 };
 
-var Player = function(gameCount, name, dob, gradeLevel, activeSport, sports, positions, stats, gameRecords){
-  this.gameCount = gameCount;
-  this.name = name;
-  this.dob = dob;
-  this.gradeLevel = gradeLevel;
-  this.activeSport = activeSport;
-  this.sports = sports;
-  this.positions = positions;
-  this.stats = stats;
-  this.gameRecords = gameRecords;
+var Player = function(name, dob, gradeLevel, activeSport, gameCount, sports, positions, stats, gameRecords){
+  if(gameCount && sports && positions && stats && gameRecords){
+    this.name = name;
+    this.dob = dob;
+    this.gradeLevel = gradeLevel;
+    this.activeSport = activeSport;
+    this.gameCount = gameCount;
+    this.sports = sports;
+    this.positions = positions;
+    this.stats = stats;
+    this.gameRecords = gameRecords;
+  }else{
+    this.gameCount = 0;
+    this.name = name;
+    this.dob = dob;
+    this.gradeLevel = gradeLevel;
+    this.activeSport = activeSport;
+    this.sports = [activeSport];
+    this.positions = [new Position(activeSport)];
+    this.stats = [new Stats(activeSport)];
+    this.gameRecords = [];
+  }
+
 };
 
 Player.prototype.getStatsFor = function(sport){

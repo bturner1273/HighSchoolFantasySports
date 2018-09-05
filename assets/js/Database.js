@@ -15,7 +15,7 @@ function getPlayerByName(name){
 function pushPlayer(player){
     playersRef.child(player.name).set(player);
     playerList.push(player);
-    currentPlayersTable.append(player.toTableRow());
+    currentPlayersTable.append(player.toTableRow(true));
     bindLastRemoveButton();
 }
 
@@ -48,7 +48,7 @@ playersRef.on("value", function(snapshot){
       data = snapshot;
       initial_load = false;
       snapshot.forEach(function(childSnapshot){
-        var toAdd = new Player(childSnapshot.val().gameCount, childSnapshot.val().name, childSnapshot.val().dob, childSnapshot.val().gradeLevel, childSnapshot.val().activeSport, childSnapshot.val().sports, childSnapshot.val().positions, childSnapshot.val().stats, childSnapshot.val().gameRecords);
+        var toAdd = new Player(childSnapshot.val().name, childSnapshot.val().dob, childSnapshot.val().gradeLevel, childSnapshot.val().activeSport, childSnapshot.val().gameCount, childSnapshot.val().sports, childSnapshot.val().positions, childSnapshot.val().stats, childSnapshot.val().gameRecords);
         playerList.push(toAdd);
         currentPlayersTable.append(toAdd.toTableRow(true));
       });

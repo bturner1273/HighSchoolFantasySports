@@ -1,0 +1,32 @@
+-gradutation year instead of DOB
+
+-jersey number
+
+-school affiliation
+
+-someone who is given permission to be an official recorder, general player (look up their own stats, play with graphs/scenarios),
+	can record stats with official recorder (team owner) permission
+
+-every coach loads official records into one place!!!
+
+-input stats on separate page/ OR CONDENSE SPACE BETWEEN TDS
+
+-switch stats object to dictionary, and stats_table name to something that makes more sense
+
+-keep stats keys in a list to keep order when getting from hash table
+
+-make it so that if there are over 100 players start making multiple
+	player selection pages
+
+-get rid of localeCompare()
+
+-look up : hover for balls for pickGame modal and change mouse pointer
+
+-verify all inputs before adding new player object to database
+
+-make a class to divide aggregateable stats into how they are processed for instance BA is hits/totalAtBats
+	so that bindAggregatableStats can be a method of the Game class
+
+-CLOSURES
+
+-best code practices for js tutorials, "you don't know javascript"

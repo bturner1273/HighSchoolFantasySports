@@ -42,7 +42,7 @@ Player.prototype.addSport = function(sport){
 };
 
 //will return a table row representing this player
-Player.prototype.toTableRow = function(){
+Player.prototype.toTableRow = function(tf){
     var row = $("<tr></tr>");
     var name = $('<td></td>');
     name.html(this.name);
@@ -52,11 +52,15 @@ Player.prototype.toTableRow = function(){
     grade.html(this.gradeLevel);
     var sports = $('<td></td>');
     sports.html(this.sports);
-    var radio = $('<td></td>');
-    var radio_btn = $('<input type="checkbox">');
-    radio.append(radio_btn);
+    var check = $('<td></td>');
+    var checkbox = $('<input type="checkbox">');
+    check.append(checkbox);
     var remove = $('<td><button type="button" class="close" style="color:red;" aria-label="Close"><span aria-hidden="true">&times;</span></button></td>');
-    row.append(name,dob,grade,sports,radio,remove);
+    if(tf){
+      row.append(name,dob,grade,sports,check,remove);
+    }else{
+      row.append(name,dob,grade,sports,check);
+    }
     return row;
 };
 

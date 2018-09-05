@@ -49,7 +49,7 @@ playersRef.on("value", function(snapshot){
       snapshot.forEach(function(childSnapshot){
         var toAdd = new Player(childSnapshot.val().name, childSnapshot.val().dob, childSnapshot.val().gradeLevel, childSnapshot.val().activeSport);
         playerList.push(toAdd);
-        currentPlayersTable.append(toAdd.toTableRow());
+        currentPlayersTable.append(toAdd.toTableRow(true));
       });
       bindRemoveButtons();
     }

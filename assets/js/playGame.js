@@ -37,9 +37,17 @@ playBasketball.click(function(){
 
 
 addPlayerButton.click(function(){
-  var addablePlayers = arrayDiff(playerList, game.players);
-  console.log("Players that can be added: " + addablePlayers);
+  loadAddablePlayersTable(arrayDiff(playerList, game.players));
 });
+
+function loadAddablePlayersTable(players){
+  $("#addPlayersTable").children().remove();
+  $(players).each(function(){
+    $("#addPlayersTable").append(this.toTableRow(false));
+  });
+  $("#addPlayersModal").modal('toggle');
+}
+
 
 function arrayDiff(a, b) {
   return a.filter(
@@ -57,7 +65,7 @@ closeGameButton.click(function(){
 saveGameButton.click(function(){
   game.updatePlayerGameRecords();
   game.updateDatabase();
-  hideModalTable();
+  hideGameModal();
   backToStart();
   game.players.forEach(function(player){
     player.updateStats();
@@ -65,7 +73,7 @@ saveGameButton.click(function(){
   game = null;
 });
 
-function hideModalTable(){
+function hideGameModal(){
   $("#gameModal").modal('toggle');
 }
 

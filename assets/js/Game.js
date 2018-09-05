@@ -1,10 +1,19 @@
 //still todo:
 /*
-active sport inputs for player entry are most likely
-unnecessary now as the game classes will change the players
-active sport if they are player that game
+-active sport inputs for player entry are most likely
+  unnecessary now as the game classes will change the players
+  active sport if they are player that game
 
--Add player functionality in game modal
+-Add player functionality in addPlayer model add player button
+
+-Warn user about starting a game with no players or adding a player
+  when there is no player to add
+
+-If in a game and the game is saved take the players that were updated
+  in the database and highlight their rows in the playerlist green for a few seconds
+  if the close button is pressed than highlight red for a few seconds to show
+  that the game was not saved
+
 */
 var firstLoad = true;
 

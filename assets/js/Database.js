@@ -19,12 +19,27 @@ function pushPlayer(player){
     bindLastRemoveButton();
 }
 
-function removePlayer(player){
-  playersRef.child($(player).parent().parent()[0].cells[0].innerHTML).remove();
+function pushPlayerWithoutAppendingToTable(player){
+      playersRef.child(player.name).set(player);
+      playerList.push(player);
 }
 
-function updatePlayer(player){
+function removePlayer(player){
+  playersRef.child($(player).parent().parent()[0].cells[0].innerHTML).remove();
+  removeFromPlayerList(player);
+}
 
+function removeFromPlayerList(player){
+  for(var i = 0; i < playerList.length; i++){
+    if(playerList[i].name.localeCompare(player.name, 'en', {'sensitivity':'base'}) == 0){
+      playerList.splice(i,1);
+    }
+  }
+}
+
+function removePlayerObject(player){
+  playersRef.child(player.name).remove();
+  removeFromPlayerList(player);
 }
 
 playersRef.on("value", function(snapshot){

@@ -4,12 +4,8 @@ active sport inputs for player entry are most likely
 unnecessary now as the game classes will change the players
 active sport if they are player that game
 
--Update database functionality    --just delete players in game from the database and restore them with their updated values
 -Add player functionality in game modal
-
 */
-
-
 var firstLoad = true;
 
 var Game = function(){
@@ -158,10 +154,11 @@ Game.prototype.bindStatAbreviationExplanations = function(statExplanationList){
   });
 };
 
-Game.prototype.updatePlayerStats = function(){
+Game.prototype.updatePlayerGameRecords = function(){
   var length = this.statsToRecord.length;
   var tempStats = this.statsToRecord;
   var tempAgRows = this.aggregatedRows;
+
   $("#modalTable tr:not(:first)").each(function(){
     for(var i = 0; i < length; i++){
       if(tempAgRows.includes(i+1)){
@@ -171,6 +168,21 @@ Game.prototype.updatePlayerStats = function(){
       }
     }
   });
+
+  this.players.forEach(function(e){
+    e.gameRecords[e.gameCount].value.setStat("ng*",+e.gameRecords[e.gameCount].value.getStat("ng*").value + 1);
+    e.getStatsFor(e.activeSport).setStat("ng*", +e.getStatsFor(e.activeSport).getStat("ng*").value + 1);
+    e.gameCount++;
+  });
+};
+
+Game.prototype.updateDatabase = function(){
+  this.players.forEach(function(e){
+    removePlayerObject(e);
+  });
+  this.players.forEach(function(e){
+    pushPlayerWithoutAppendingToTable(e);
+  });
 };
 
 //abstract functions
@@ -178,6 +190,6 @@ Game.prototype.bindAggregateStats = function(){
   throw new Error("Abstract function must be implemented before being called");
 };
 
-Game.prototype.recordPlay = function(){
+Game.prototype.recordSnapshot = function(){
   throw new Error("Abstract function must be implemented before being called");
 };

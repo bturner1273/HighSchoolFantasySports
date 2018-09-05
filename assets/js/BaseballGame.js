@@ -43,17 +43,3 @@ BaseballGame.prototype.bindAggregateStats = function(){
     });
   });
 };
-
-// For hitters:
-// Batting Average
-// Home Runs
-// RBIS
-// Runs Scored
-// Stolen Bases
-//
-// For pitchers:
-// Wins
-// ERA
-// WHIP
-// Strikeouts
-// Saves

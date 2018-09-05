@@ -6,6 +6,7 @@ var playBasketball = $("playBasketball");
 
 var closeGameButton = $("#closeGameButton");
 var addPlayerButton = $("#addPlayerButton");
+var saveGameButton = $("#saveGameButton");
 
 var game;
 
@@ -39,6 +40,19 @@ closeGameButton.click(function(){
   backToStart();
 });
 
+saveGameButton.click(function(){
+  game.updatePlayerGameRecords();
+  game.updateDatabase();
+  hideModalTable();
+  backToStart();
+  game.players.forEach(function(player){
+    player.updateStats();
+  });
+});
+
+function hideModalTable(){
+  $("#gameModal").modal('toggle');
+}
 
 function backToStart(){
   $("#modalTable").children().remove();

@@ -1,7 +1,3 @@
-//Players need a position field which is a key which is a string
-//representing the name of the sport and a list which is the list
-//of positions that that player plays in that sport
-
 var Player = function(name){
   this.name = name;
 };
@@ -24,6 +20,11 @@ Player.prototype.getStatsFor = function(sport){
         return this.stats[i];
       }
     }
+};
+
+//this function will do all the compounding of the stats
+Player.prototype.updateStats = function(){
+
 };
 
 Player.prototype.hasStatsFor = function(sport){

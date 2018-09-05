@@ -49,6 +49,3 @@ $(document).on("keypress", function(event){
         getPlayer();
     }
 });
-
-//below will contain sorting methods for the players list, where players can be sorted by gradelevel, lexographical order in
-//terms of their name, birthdate, or whatever else someone asks for.

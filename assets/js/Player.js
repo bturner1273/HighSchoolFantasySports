@@ -14,6 +14,18 @@ var Player = function(name, dob, gradeLevel, activeSport){
     this.gameRecords = [];
 };
 
+var Player = function(gameCount, name, dob, gradeLevel, activeSport, sports, positions, stats, gameRecords){
+  this.gameCount = gameCount;
+  this.name = name;
+  this.dob = dob;
+  this.gradeLevel = gradeLevel;
+  this.activeSport = activeSport;
+  this.sports = sports;
+  this.positions = positions;
+  this.stats = stats;
+  this.gameRecords = gameRecords;
+};
+
 Player.prototype.getStatsFor = function(sport){
     for(var i = 0; i < this.stats.length; i++){
       if(this.stats[i].sport.toUpperCase() == sport.toUpperCase()){
@@ -24,7 +36,9 @@ Player.prototype.getStatsFor = function(sport){
 
 //this function will do all the compounding of the stats
 Player.prototype.updateStats = function(){
-
+  this.gameRecords.forEach(function(){
+    
+  });
 };
 
 Player.prototype.hasStatsFor = function(sport){

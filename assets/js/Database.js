@@ -42,12 +42,13 @@ function removePlayerObject(player){
   removeFromPlayerList(player);
 }
 
+
 playersRef.on("value", function(snapshot){
     if(initial_load){
       data = snapshot;
       initial_load = false;
       snapshot.forEach(function(childSnapshot){
-        var toAdd = new Player(childSnapshot.val().name, childSnapshot.val().dob, childSnapshot.val().gradeLevel, childSnapshot.val().activeSport);
+        var toAdd = new Player(childSnapshot.val().gameCount, childSnapshot.val().name, childSnapshot.val().dob, childSnapshot.val().gradeLevel, childSnapshot.val().activeSport, childSnapshot.val().sports, childSnapshot.val().positions, childSnapshot.val().stats, childSnapshot.val().gameRecords);
         playerList.push(toAdd);
         currentPlayersTable.append(toAdd.toTableRow(true));
       });

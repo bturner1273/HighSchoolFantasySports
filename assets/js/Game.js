@@ -14,6 +14,9 @@
   if the close button is pressed than highlight red for a few seconds to show
   that the game was not saved
 
+-Player.updateStats() needs to get written to compound all the players gameRecords
+  of a given game type into one stat object of that game type
+
 */
 var firstLoad = true;
 
@@ -84,7 +87,7 @@ Game.prototype.loadPlayerGameRecords = function(){
     for(var j = 0; j < this.statsToRecord.length; j++){
       value.addStat(this.statsToRecord[j], 0);
     }
-    this.players[i].gameRecords.push({key: this.players[i].activeSport + " Game " + this.players[i].getStatsFor(this.players[i].activeSport).getStat("ng*").value, value: value});
+    this.players[i].gameRecords.push({key: this.players[i].activeSport + " Game " + this.players[i].getStatsFor(this.players[i].activeSport).stats_table[0].value, value: value});
   }
 };
 
@@ -180,7 +183,7 @@ Game.prototype.updatePlayerGameRecords = function(){
 
   this.players.forEach(function(e){
     e.gameRecords[e.gameCount].value.setStat("ng*",+e.gameRecords[e.gameCount].value.getStat("ng*").value + 1);
-    e.getStatsFor(e.activeSport).setStat("ng*", +e.getStatsFor(e.activeSport).getStat("ng*").value + 1);
+    e.getStatsFor(e.activeSport).stats_table[0].value = +e.getStatsFor(e.activeSport).stats_table[0].value + 1;
     e.gameCount++;
   });
 };

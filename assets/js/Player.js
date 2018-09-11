@@ -1,7 +1,6 @@
-var Player = function(name, dob, gradeLevel, activeSport, gameCount, sports, positions, stats, gameRecords){
+var Player = function(name, gradeLevel, activeSport, gameCount, sports, positions, stats, gameRecords){
   if(gameCount && sports && positions && stats && gameRecords){
     this.name = name;
-    this.dob = dob;
     this.gradeLevel = gradeLevel;
     this.activeSport = activeSport;
     this.gameCount = gameCount;
@@ -12,7 +11,6 @@ var Player = function(name, dob, gradeLevel, activeSport, gameCount, sports, pos
   }else{
     this.gameCount = 0;
     this.name = name;
-    this.dob = dob;
     this.gradeLevel = gradeLevel;
     this.activeSport = activeSport;
     this.sports = [activeSport];

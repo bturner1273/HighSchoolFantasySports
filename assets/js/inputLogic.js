@@ -1,7 +1,6 @@
 var newPlayersTable = $("#newPlayersTable");
 var currentPlayersTable = $("#currentPlayersTable");
 var newPlayerName = $('[name="name"]');
-var newPlayerDob = $('[name="dob"]');
 var newPlayerGrade = $('[name="grade"]');
 var newPlayerSports = $('[name="sports"]');
 var enterPlayerButton = $("#enter_player");
@@ -32,9 +31,8 @@ enterPlayerButton.on("click", function(){
 
 function getPlayer(){
   if(newPlayerName.val() != null && newPlayerName.val() !=""){
-    var toAdd = new Player(newPlayerName.val(), newPlayerDob.val(), newPlayerGrade.val(), newPlayerSports.val());
+    var toAdd = new Player(newPlayerName.val(), newPlayerGrade.val(), newPlayerSports.val());
     newPlayerName.val("");
-    newPlayerDob.val("");
     newPlayerGrade.val("");
     newPlayerSports.val("");
     pushPlayer(toAdd);

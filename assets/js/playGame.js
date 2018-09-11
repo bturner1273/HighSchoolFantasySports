@@ -15,7 +15,6 @@ playBaseball.click(function(){
       $("#gameModal").modal('toggle');
       game = new BaseballGame();
       console.log('New baseball game initialized ' + game.timeStamp);
-      game.setPlayersActiveSport("baseball");
       game.showGameModal();
       game.bindStatAbreviationExplanations(['', '# Games', '# Times At Bat', '# Hits At Bat', 'Batting Average*', '# Home Runs', '# Runs Batted In', 'Runs Scored', '# Stolen Bases', 'Wins', 'Runs Earned Off This Pitcher', 'Walks Earned Off This Pitcher', 'Hits Earned Off This Pitcher', 'Walks Plus Hits Per Inning Pitched', '# Strikeouts', '# Saves' ]);
       game.bindAggregateStats();
@@ -71,6 +70,7 @@ saveGameButton.click(function(){
     player.updateStats();
   });
   game = null;
+  reloadCurrentPlayersTable();
 });
 
 function hideGameModal(){

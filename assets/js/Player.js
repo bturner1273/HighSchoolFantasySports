@@ -1,5 +1,5 @@
 var Player = function(name, gradeLevel, activeSport, gameCount, sports, positions, stats, gameRecords){
-  if(gameCount && sports && positions && stats && gameRecords){
+  if(gameCount && sports && stats && gameRecords){
     this.name = name;
     this.gradeLevel = gradeLevel;
     this.activeSport = activeSport;
@@ -9,13 +9,13 @@ var Player = function(name, gradeLevel, activeSport, gameCount, sports, position
     this.stats = stats;
     this.gameRecords = gameRecords;
   }else{
-    this.gameCount = 0;
     this.name = name;
     this.gradeLevel = gradeLevel;
-    this.activeSport = activeSport;
-    this.sports = [activeSport];
-    this.positions = [new Position(activeSport)];
-    this.stats = [new Stats(activeSport)];
+    this.gameCount = 0;
+    this.activeSport = "";
+    this.sports = [];
+    this.positions = [];
+    this.stats = [];
     this.gameRecords = [];
   }
 };
@@ -45,8 +45,10 @@ Player.prototype.hasStatsFor = function(sport){
 };
 
 Player.prototype.addSport = function(sport){
+  if(this.sports.find(e => e == sport) != sport){
     this.sports.push(sport);
     this.stats.push(new Stats(sport));
+  }
 };
 
 Player.prototype.toTableRow = function(tf){

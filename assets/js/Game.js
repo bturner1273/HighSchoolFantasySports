@@ -65,6 +65,7 @@ Game.prototype.addPlayersToGame = function(){
      $(checkboxes[i]).prop('checked', false);
      this.addPlayer(getPlayerByName($(checkboxes[i]).parent().parent()[0].cells[0].innerHTML));
   }
+  this.setPlayersActiveSport(this.name);
   this.loadPlayerStats();
   this.loadPlayerGameRecords();
 };
@@ -154,6 +155,7 @@ function bindIncrementAndDecrementButtons(){
 Game.prototype.setPlayersActiveSport = function(sport){
   this.players.forEach(function(e){
     e.activeSport = sport;
+    e.addSport(sport);
   });
 };
 

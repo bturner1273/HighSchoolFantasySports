@@ -44,6 +44,13 @@ function removePlayerObject(player){
   removeFromPlayerList(player);
 }
 
+function reloadCurrentPlayersTable(){
+  $("#currentPlayersTable").children().remove();
+  $("#currentPlayersTable").append($($("#currentPlayersTableHeader").html()));
+  playerList.forEach(function(e){
+    $("#currentPlayersTable").append(e.toTableRow(true));
+  });
+}
 
 playersRef.on("value", function(snapshot){
     if(initial_load){

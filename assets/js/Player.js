@@ -52,23 +52,16 @@ Player.prototype.addSport = function(sport){
 };
 
 Player.prototype.toTableRow = function(tf){
-    var row = $("<tr></tr>");
-    var name = $('<td></td>');
-    name.html(this.name);
-    var dob = $('<td></td>');
-    dob.html(this.dob);
-    var grade = $('<td></td>');
-    grade.html(this.gradeLevel);
-    var sports = $('<td></td>');
-    sports.html(this.sports);
-    var check = $('<td></td>');
-    var checkbox = $('<input type="checkbox">');
-    check.append(checkbox);
-    var remove = $('<td><button type="button" class="close" style="color:red;" aria-label="Close"><span aria-hidden="true">&times;</span></button></td>');
+    var row = $($("#playerRowTemplate").html());
+    var name = $($("#playerDataTemplate").html()).html(this.name);
+    var grade = $($("#playerDataTemplate").html()).html(this.gradeLevel);
+    var sports = $($("#playerDataTemplate").html()).html(this.sports);
+    var check = $($("#playerCheckboxTemplate").html());
+    var remove = $($("#playerRemoveButtonTemplate").html());
     if(tf){
-      row.append(name,dob,grade,sports,check,remove);
+      row.append(name,grade,sports,check,remove);
     }else{
-      row.append(name,dob,grade,sports,check);
+      row.append(name,grade,sports,check);
     }
     return row;
 };

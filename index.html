@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -75,7 +75,6 @@
           <thead>
             <tr>
               <th scope="col">Name</th>
-              <th scope="col">D.O.B.</th>
               <th scope="col">Grade Level</th>
               <th scope="col">Active Sport</th>
               <th scope="col">Select</th>
@@ -148,12 +147,33 @@
   </div>
 
 
-<script type="text/plain" id="playrRowTempl">
-<tr class="container-fluid" data-player>
-  <td>
-  </td>
-</tr>
+<!--THIS IS HOW PLAYER TABLE ROWS NEED TO BE MADE-->
+<script type="text/plain" id="playerRowTemplate">
+  <tr class="playerRow">
+
+  </tr>
 </script>
+
+<script type="text/plain" id="playerDataTemplate">
+  <td class="playerData">
+
+  </td>
+</script>
+
+<script type="text/plain" id="playerCheckboxTemplate">
+  <td>
+    <input type="checkbox" class="playerCheckbox">
+  </td>
+</script>
+
+<script type="text/plain" id="playerRemoveButtonTemplate">
+  <td>
+    <button type="button" class="close playerRemoveButton" style="color:red;" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </td>
+</script>
+
 
     <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
     <script>

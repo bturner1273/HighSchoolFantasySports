@@ -73,7 +73,6 @@ Game.prototype.addPlayersToGame = function(){
 
 Game.prototype.loadPlayerPositions = function(){
   this.players.forEach(function(player){
-    console.log(player.hasPositionsFor(player.activeSport));
     if(!player.hasPositionsFor(player.activeSport)){
       player.positions.push(new Position(player.activeSport));
     }
@@ -114,13 +113,10 @@ Game.prototype.incrementNumGames = function(){
 
 Game.prototype.setUpGameModal = function(aggregatedRows){
   if(firstLoad){
-    // var templ = $($("playrRowTempl").html()); //this is making the template to keep loading on the page
-    // templ.find("td").html(this.player.name) //this is it too
     firstLoad = false;
-    var th = $("<tr class='container-fluid'></tr>");
-    th.append($('<td></td>'));
+    var th = $($("#modalTableHeaderTemplate").html());
     this.statsToRecord.forEach(function(e){
-      th.append($("<td>" + '<button type="button" class="btn btn-dark statAbreviations" data-toggle="tooltip" data-placement="bottom" title="">' + e + '</button>' + "</td>"));
+      th.append($($("#modalTableDataTemplate").html()).append($($("#modalTableToolTipTemplate").html()).append(e)));
     });
     $('#modalTable').append(th);
     this.addPlayersToGame();
@@ -129,10 +125,10 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
       var tr = $("<tr></tr>");
       for(var j = 0; j < this.statsToRecord.length+1; j++){
         if(j==0){
-           tr.append($("<td>" + this.players[i].name + "</td>"));
+           tr.append($($("#modalTableDataTemplate").html()).append(this.players[i].name).addClass("nameCell"));
         }else if(aggregatedRows.find(e => e == j) == j){  //use regular function instead of arrow function
-           tr.append($("<td>0</td>"));
-        }else tr.append($("<td><button type='button' class='btn btn-dark btn-sm decrementButton'> - </button><input type='text' class='bg-secondary text-white text-center' value='0'><button type='button' class='btn btn-dark btn-sm incrementButton'> + </button></td>"));
+           tr.append($($("#modalTableDataTemplate").html()).append(0).addClass("aggregatedDataCell"));
+        }else tr.append($($("#countableStatInputTemplate").html()).addClass("countableDataCell"));
       }
       tb.append(tr);
     }
@@ -190,9 +186,9 @@ Game.prototype.updatePlayerGameRecords = function(){
   $("#modalTable tr:not(:first)").each(function(){
     for(var i = 0; i < length; i++){
       if(tempAgRows.includes(i+1)){
-        getPlayerByName(this.cells[0].innerHTML).gameRecords[getPlayerByName(this.cells[0].innerHTML).gameCount].value.setStat(tempStats[i], this.cells[i+1].innerHTML);
+        getPlayerByName(this.cells[0].innerHTML.trim()).gameRecords[getPlayerByName(this.cells[0].innerHTML.trim()).gameCount].value.setStat(tempStats[i], this.cells[i+1].innerHTML.trim());
       }else{
-        getPlayerByName(this.cells[0].innerHTML).gameRecords[getPlayerByName(this.cells[0].innerHTML).gameCount].value.setStat(tempStats[i], $(this.cells[i+1]).children()[1].value);
+        getPlayerByName(this.cells[0].innerHTML.trim()).gameRecords[getPlayerByName(this.cells[0].innerHTML.trim()).gameCount].value.setStat(tempStats[i], $(this.cells[i+1]).children()[1].value.trim());
       }
     }
   });

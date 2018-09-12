@@ -140,7 +140,7 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
 function bindIncrementAndDecrementButtons(){
   $(".incrementButton").each(function(){
     $(this).click(function(){
-        $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()+1);
+        $($(this).parent().children().get(1)).val(Number($($(this).parent().children().get(1)).val()+1));
         $($(this).parent().children().get(1)).trigger("input");
     });
   });
@@ -149,7 +149,7 @@ function bindIncrementAndDecrementButtons(){
   $(".decrementButton").each(function(){
     $(this).click(function(){
       if($($(this).parent().children().get(1)).val() >= 1){
-        $($(this).parent().children().get(1)).val(+$($(this).parent().children().get(1)).val()-1);
+        $($(this).parent().children().get(1)).val(Number($($(this).parent().children().get(1)).val()-1));
         $($(this).parent().children().get(1)).trigger("input");
       }else{
           $($(this).parent().children().get(1)).val(0);
@@ -182,13 +182,14 @@ Game.prototype.updatePlayerGameRecords = function(){
   var length = this.statsToRecord.length;
   var tempStats = this.statsToRecord;
   var tempAgRows = this.aggregatedRows;
+  var names = $(".nameCell");
 
-  $("#modalTable tr:not(:first)").each(function(){
+  $("#modalTable tr:not(:first)").each(function(index){
     for(var i = 0; i < length; i++){
       if(tempAgRows.includes(i+1)){
-        getPlayerByName(this.cells[0].innerHTML.trim()).gameRecords[getPlayerByName(this.cells[0].innerHTML.trim()).gameCount].value.setStat(tempStats[i], this.cells[i+1].innerHTML.trim());
+        getPlayerByName(names.get(index).innerHTML.trim()).gameRecords[getPlayerByName(names.get(index).innerHTML.trim()).gameCount].value.setStat(tempStats[i], this.cells[i+1].innerHTML.trim());
       }else{
-        getPlayerByName(this.cells[0].innerHTML.trim()).gameRecords[getPlayerByName(this.cells[0].innerHTML.trim()).gameCount].value.setStat(tempStats[i], $(this.cells[i+1]).children()[1].value.trim());
+        getPlayerByName(names.get(index).innerHTML.trim()).gameRecords[getPlayerByName(names.get(index).innerHTML.trim()).gameCount].value.setStat(tempStats[i], $(this.cells[i+1]).children()[1].value.trim());
       }
     }
   });

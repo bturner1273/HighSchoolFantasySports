@@ -68,6 +68,16 @@ Game.prototype.addPlayersToGame = function(){
   this.setPlayersActiveSport(this.name);
   this.loadPlayerStats();
   this.loadPlayerGameRecords();
+  this.loadPlayerPositions();
+};
+
+Game.prototype.loadPlayerPositions = function(){
+  this.players.forEach(function(player){
+    console.log(player.hasPositionsFor(player.activeSport));
+    if(!player.hasPositionsFor(player.activeSport)){
+      player.positions.push(new Position(player.activeSport));
+    }
+  });
 };
 
 Game.prototype.loadPlayerStats = function(){

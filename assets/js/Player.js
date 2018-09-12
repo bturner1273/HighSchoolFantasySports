@@ -20,6 +20,15 @@ var Player = function(name, gradeLevel, activeSport, gameCount, sports, position
   }
 };
 
+Player.prototype.hasPositionsFor = function(sport){
+  for(var i = 0; i < this.positions.length; i++){
+    if(this.positions[i].sport == sport){
+      return true;
+    }
+  }
+  return false;
+};
+
 Player.prototype.getStatsFor = function(sport){
     for(var i = 0; i < this.stats.length; i++){
       if(this.stats[i].sport.toUpperCase() == sport.toUpperCase()){

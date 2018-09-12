@@ -140,19 +140,18 @@ Game.prototype.setUpGameModal = function(aggregatedRows){
 function bindIncrementAndDecrementButtons(){
   $(".incrementButton").each(function(){
     $(this).click(function(){
-        $($(this).parent().children().get(1)).val(Number($($(this).parent().children().get(1)).val()+1));
-        $($(this).parent().children().get(1)).trigger("input");
+        $($(this).siblings("input[type=text]")).val(Number($($(this).siblings("input[type=text]")).val())+1);
+        $($(this).siblings("input[type=text]")).trigger("input");
     });
   });
 
-//USE CLASSES
   $(".decrementButton").each(function(){
     $(this).click(function(){
-      if($($(this).parent().children().get(1)).val() >= 1){
-        $($(this).parent().children().get(1)).val(Number($($(this).parent().children().get(1)).val()-1));
-        $($(this).parent().children().get(1)).trigger("input");
+      if($($(this).siblings("input[type=text]")).val() >= 1){
+        $($(this).siblings("input[type=text]")).val(Number($($(this).siblings("input[type=text]")).val())-1);
+        $($(this).siblings("input[type=text]")).trigger("input");
       }else{
-          $($(this).parent().children().get(1)).val(0);
+          $($(this).siblings("input[type=text]")).val(0);
       }
     });
   });
